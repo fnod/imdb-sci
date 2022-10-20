@@ -12,20 +12,16 @@ readline.createInterface(
     fs.createReadStream("title.ratings.tsv"),
     new stream()
 ).on("line", l => {
-    let r = l.split("\t")
-    if (r[1] >= minRating && r[2] >= minVotes) { ratings[r[0]] = r[1] }
+    let [tid, r, v] = l.split("\t")
+    if (r >= minRating && v >= minVotes) { ratings[tid] = r }
 })
 
 readline.createInterface(
     fs.createReadStream("title.basics.tsv"),
     new stream()
 ).on("line", l => {
-    let line = l.split("\t")
-    let tid = line[0]
-    let type = line[1]
-    let title = line[2]
-    let year = line[5]
-    let genres = line[8].split(",")
+    var [tid, type, title, _, _, year, _, _, genre] = l.split("\t")
+    let genres = genre.split(",")
     let rating = ratings[tid]
 
     if (

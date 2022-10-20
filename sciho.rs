@@ -7,8 +7,6 @@ static MIN_SCORE: f64 = 7.5;
 static MIN_VOTES: i32 = 1000;
 
 fn main() {
-    assert_eq!("hello".to_owned(), "hello".to_owned());
-
     let reader = BufReader::new(File::open("title.ratings.tsv").unwrap());
     let lines = reader.lines().skip(1);
 
@@ -40,13 +38,10 @@ fn main() {
 
         if gs.clone().into_iter().find(|&x| &x == &"Sci-Fi").is_some()
         && gs.clone().into_iter().find(|&x| {
-            &x == &"Horror" 
-            || &x == &"Thriller"
-            /*|| &x == &"Mystery"*/}).is_some()
+            &x == &"Horror" || &x == &"Thriller" }).is_some()
         &&ty == "movie"
         &&r.is_some() {
-            println!("{} ({}), {} - https://imdb.com/title/{}",
-                ti, yr, r.unwrap(), id)
+            println!("{} ({}), {}", ti, yr, r.unwrap())
         } else { () };
     }
 }

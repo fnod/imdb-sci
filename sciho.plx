@@ -30,8 +30,7 @@ while (my $line = <$fh>) {
     && (index($sp[8], "Thriller") != -1 || index($sp[8], "Horror") != -1)
     && $sp[1] eq "movie"
     && exists($scores{$sp[0]})) {
-        printf("%s (%s), %s - http://imdb.com/title/%s\n", 
-                $sp[2], $sp[5], $scores{$sp[0]}, $sp[0]);
+        printf("%s (%s), %s\n", $sp[2], $sp[5], $scores{$sp[0]});
     }
 }
 

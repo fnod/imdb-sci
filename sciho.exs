@@ -26,6 +26,5 @@ File.stream!("title.basics.tsv")
   and (genres =~ "Horror" or genres =~ "Thriller")
   and Map.has_key?(ratings, tid) do
     IO.puts("#{title} (#{year}), #{ratings[tid]}")
-  end
-end)
+  end end)
     
